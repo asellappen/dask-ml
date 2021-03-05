@@ -1,0 +1,55 @@
+# ----------------------------------------------------------------------------
+#
+# Package             : dask-ml
+# Source Repo         : https://github.com/dask/dask-ml
+# Travis Job Link     : https://travis-ci.com/github/asellappen/dask-ml/
+# Created travis.yml  : Yes
+# Maintainer          : Arumugam N S <asellappen@yahoo.com> / Priya Seth<sethp@us.ibm.com>
+#
+# Script License      : Apache License, Version 2 or later
+#
+# ----------------------------------------------------------------------------
+language: python
+dist: bionic
+arch:
+ # - amd64
+  - ppc64le
+
+python:
+ # - 3.7
+  - 3.8
+  
+env: $PYTHON_VERSION=3.8
+
+sudo: required
+before_install:
+  - sudo apt-get install gfortran libopenblas-dev liblapack-dev
+  - sudo apt-get install -y python-pygraphviz
+  - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then 
+        wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-ppc64le.sh -O miniconda.sh;
+    else
+        wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+    fi
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes
+  - conda config --set auto_update_conda False
+  - conda update -q --all
+  - conda install python=$PYTHON_VERSION pip  pytest-xdist pytest
+  - pip install python-coveralls --no-cache-dir
+ # - pip install cloudpickle --no-cache-dir
+  - pip install "dask[dataframe]" --no-cache-dir
+  - conda install llvmlite==0.36.0rc1  -c numba
+  - python -m pip install --no-deps numpy==1.20
+  #- conda install  toolz  pandas multipledispatch jsonschema fsspec dask_glm
+  - conda install scikit-image distributed 
+  - conda install -c power  scikit-learn
+  - pip install dask_glm --no-cache-dir
+   
+install:
+  - python -m pip install --quiet --no-deps -e .
+
+script: 
+   #- python -mpytest -raR --maxfail=50 --timeout=300 --durations=25  dask-ml
+  - python -m pytest -v tests
