@@ -42,6 +42,7 @@ before_install:
   - pip install "dask[dataframe]" --no-cache-dir
   - conda install llvmlite==0.36.0rc1  -c numba
   - python -m pip install --no-deps numpy==1.20
+  - python -m pip install numpy==1.20.1 --no-cache-dir
   #- conda install  toolz  pandas multipledispatch jsonschema fsspec dask_glm
   - conda install scikit-image distributed 
   - conda install -c power  scikit-learn
