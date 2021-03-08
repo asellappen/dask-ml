@@ -46,7 +46,7 @@ before_install:
  # - conda install scikit-image distributed 
  # - conda install -c power  scikit-learn
 #  - pip install dask_glm --no-cache-dir
-  - conda env create --quiet --file=$(envFile) --name=dask-ml-test && conda list -n dask-ml-test
+  - conda env create --quiet --file=$envFile --name=dask-ml-test && conda list -n dask-ml-test
    
 install:
   - python -m pip install --quiet --no-deps -e .
