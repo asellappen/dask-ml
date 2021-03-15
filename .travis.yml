@@ -38,9 +38,8 @@ before_install:
   - conda config --set auto_update_conda False
   - conda update -q --all
   - conda install python=$PYTHON_VERSION pip  pytest-xdist pytest
-  - conda install   toolz packaging pandas numba 
-  - conda install  black==19.10b0 isort==4.3.21 multipledispatch >=0.4.9 mypy 
-  - conda install numba
+ # - conda install   toolz packaging pandas numba 
+ # - conda install  black==19.10b0 isort==4.3.21 multipledispatch >=0.4.9 mypy 
   - pip install pytest-mock
   - pip install python-coveralls --no-cache-dir
   - pip install "dask[dataframe]" --no-cache-dir
