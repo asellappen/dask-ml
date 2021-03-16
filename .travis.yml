@@ -29,7 +29,6 @@ sudo: required
 
 before_install:
   - sudo apt-get install gfortran libopenblas-dev liblapack-dev
- # - sudo apt-get install -y python-pygraphviz
   - export envFile='ci/environment-3.7.yaml'
   - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then 
         wget https://repo.anaconda.com/miniconda/Miniconda3-py37_4.9.2-Linux-ppc64le.sh -O miniconda.sh; 
@@ -47,8 +46,13 @@ before_install:
   - pip install python-coveralls --no-cache-dir
   - pip install "dask[dataframe]" --no-cache-dir
   - conda install llvmlite==0.36.0rc1  -c numba
-#  - conda install numba isort
   - python -m pip install --no-deps numpy==1.20
+  - if [[ "$PYTHON_VERSION" == "3.6" ]]; then
+     python -m pip install --no-deps numpy==1.17.3;
+    else
+     python -m pip install --no-deps numpy==1.;
+     sudo apt-get install -y python-pygraphviz;
+    fi
   - python -m pip install numpy==1.20.1 --no-cache-dir
   - conda install scikit-image distributed 
   - conda install -c power  scikit-learn
