@@ -51,7 +51,7 @@ before_install:
   - conda env create --quiet --file=$envFile --name=dask-ml-test && conda list -n dask-ml-test
    
 install:
-  - python -m pip install --quiet --no-deps -e .
+  - travis_wait 20  python -m pip install --quiet --no-deps -e .
 
 script: 
    #- tests/model_selection/test_incremental.py not supported for ppc
