@@ -49,7 +49,6 @@ before_install:
      python -m pip install --no-deps numpy==1.17.3;
     else
      python -m pip install --no-deps numpy==1.20;
-     sudo apt-get install -y python-pygraphviz;
     fi
   - conda install scikit-image distributed 
   - conda install -c power  scikit-learn
