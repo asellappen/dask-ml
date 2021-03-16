@@ -27,7 +27,7 @@ matrix:
 sudo: required
 before_install:
   - sudo apt-get install gfortran libopenblas-dev liblapack-dev
-  - sudo apt-get install -y python-pygraphviz
+ # - sudo apt-get install -y python-pygraphviz
   - export envFile='ci/environment-3.7.yaml'
   - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then 
         wget https://repo.anaconda.com/miniconda/Miniconda3-py37_4.9.2-Linux-ppc64le.sh -O miniconda.sh; 
