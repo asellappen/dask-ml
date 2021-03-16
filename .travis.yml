@@ -51,7 +51,6 @@ before_install:
      python -m pip install --no-deps numpy==1.20;
      sudo apt-get install -y python-pygraphviz;
     fi
-  - python -m pip install numpy==1.20.1 --no-cache-dir
   - conda install scikit-image distributed 
   - conda install -c power  scikit-learn
   - pip install dask_glm --no-cache-dir
