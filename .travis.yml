@@ -46,8 +46,8 @@ before_install:
   - pip install pytest-mock
   - pip install python-coveralls --no-cache-dir
   - pip install "dask[dataframe]" --no-cache-dir
-#  - conda install llvmlite==0.36.0rc1  -c numba
-  - conda install numba isort
+  - conda install llvmlite==0.36.0rc1  -c numba
+#  - conda install numba isort
   - python -m pip install --no-deps numpy==1.20
   - python -m pip install numpy==1.20.1 --no-cache-dir
   - conda install scikit-image distributed 
