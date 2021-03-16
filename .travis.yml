@@ -15,14 +15,26 @@ dist: focal
 
 matrix:
   include:
-  - env: $PYTHON_VERSION=3.6
+  - env: 
+     - PYTHON_VERSION=3.6
+     - envFile='ci/environment-3.6.yaml'
   - env: $PYTHON_VERSION=3.7
+     - PYTHON_VERSION=3.7
+     - envFile='ci/environment-3.7.yaml'
   - env: $PYTHON_VERSION=3.8
+     - PYTHON_VERSION=3.8
+     - envFile='ci/environment-3.8.yaml'
   - env: $PYTHON_VERSION=3.6
+     - PYTHON_VERSION=3.6
+     - envFile='ci/environment-3.6.yaml'
     arch: ppc64le
   - env: $PYTHON_VERSION=3.7
+     - PYTHON_VERSION=3.7
+     - envFile='ci/environment-3.7.yaml'
     arch: ppc64le
   - env: $PYTHON_VERSION=3.8  
+     - PYTHON_VERSION=3.7
+     - envFile='ci/environment-3.7.yaml'
     arch: ppc64le
 
 sudo: required
