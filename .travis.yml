@@ -10,10 +10,7 @@
 #
 # ----------------------------------------------------------------------------
 language: python
-dist: bionic
-arch:
-  - amd64
-  - ppc64le
+dist: focal
 
 matrix:
   include:
